@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">	
+	<h:form>
+		<p:menubar>
+			<p:submenu label="#{msg['menu.cadastro']}" icon="fa fa-save" >
+				<p:menuitem value="#{msg['menuitem.empresa']}" outcome="empresa" icon="fa fa-briefcase" />
+				<p:menuitem value="#{msg['menuitem.categoria']}" outcome="categoria" icon="fa fa-user" />
+			</p:submenu>
+			<p:menuitem value="#{msg['menu.dashboard']}" outcome="dashboard" icon="fa fa-columns" />
+			
+			<f:facet name="options">
+				<h:commandButton 
+					title="Português"
+					styleClass="bandeira-idioma"
+					image="resources/imagens/brazil-flag.png">
+					
+					<f:setPropertyActionListener 
+						value="pt" 
+						target="#{idiomaController.idiomaSelecionado}" />
+				</h:commandButton>
+				<h:commandButton 
+					title="Inglês"
+					styleClass="bandeira-idioma"
+					image="resources/imagens/england-flag.png">
+					
+					<f:setPropertyActionListener 
+						value="en" 
+						target="#{idiomaController.idiomaSelecionado}" />
+				</h:commandButton>
+	           <p:commandButton type="button" value="Sair" icon="fa fa-home" />
+	       </f:facet>
+		</p:menubar>
+	</h:form>
+</html>

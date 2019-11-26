@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Cadastro Categoria</ui:define>
+
+	<ui:define name="conteudo">
+
+		<h:form id="formCadastro">
+
+			<div class="ui-fluid">
+
+				<p:panelGrid columns="2" layout="grid"
+					columnClasses="ui-g-4 ui-md-3 ui-lg-2, ui-g-8 ui-md-9 ui-lg-10"
+					styleClass="ui-painelgrid-blank">
+
+					<p:outputLabel value="Categoria" for=" categoria" />
+					<p:inputText id="categoria" required="true"
+						requiredMessage="Campo com preenchimento obrigatório"
+						placeholder="Informe a categoria"
+						value="#{cadastroCategoriaController.categoria.descricao}" />
+				</p:panelGrid>
+
+			</div>
+
+			<p:spacer height="10" />
+
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="salvar" icon="fa fa-save"
+						update="formDataTable formCadastro"
+						action="#{cadastroCategoriaController.salvar}" />
+
+					<p:commandButton value="limpar" icon="fa fa-eraser" update="@form"
+						process="@this" action="#{cadastroCategoriaController.limpar}" />
+				</f:facet>
+			</p:toolbar>
+
+		</h:form>
+		<p:spacer height="10" />
+
+		<h:form id="formDataTable">
+
+			<p:dataTable id="table" var="c" widgetVar="table" reflow="true"
+				paginator="true" rows="5" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15"
+				value="#{cadastroCategoriaController.categorias}">
+
+				<p:column headerText="Categoria" sortBy="#{c.descricao}">
+					<h:outputText value="#{c.descricao}" />
+				</p:column>
+
+				<p:column exportable="false"
+					styleClass="align-center categoria-coluna-acoes">
+					<p:commandButton icon="fa fa-pencil" update="formCadastro">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{cadastroCategoriaController.categorias}" />
+					</p:commandButton>
+
+					<p:commandButton icon="fa fa-trash"
+						update="formDataTable:confirmDialog"
+						oncomplete="CA('confirmDialog').show()">
+						<f:setPropertyActionListener value="{c}"
+							target="#{cadastroCategoriaController.categoria}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog id="confirmDialog" header="Atenção!"
+				responsive="true"
+				message="Tem certeza que deseja excluir a categoria: #{cadastroCategoriaController.categoria.descricao} ?"
+				widgetVar="confirmDialog" showEffect="fade" hideEffect="fade"
+				closable="false" closeOnEscape="true">
+
+				<p:commandButton value="Sim" icon="fa fa-check" update="@form"
+					action="#{cadastroCategoriaController.excluir}"
+					oncomplete="CA('confirmDialog').hide()" />
+
+				<p:button value="Não" icon="fa fa-times"
+					onclick="CA('confirmDialog').hide(); return false;" />
+
+			</p:confirmDialog>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
