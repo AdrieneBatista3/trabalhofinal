@@ -16,12 +16,12 @@ import sc.senac.br.controlefinanceiro.dao.RamoDao;
 import sc.senac.br.controlefinanceiro.model.Categoria;
 import sc.senac.br.controlefinanceiro.model.Empresa;
 import sc.senac.br.controlefinanceiro.model.Ramo;
+
 @ViewScoped
 @ManagedBean
-public class CadastroEmpresaController implements Serializable{
+public class CadastroEmpresaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	 
 
 	private Empresa empresa;
 	private List<Empresa> empresas;
@@ -67,23 +67,23 @@ public class CadastroEmpresaController implements Serializable{
 		buscar();
 
 	}
-	
+
 	public void excluir() {
 		dao.excluir(empresa);
 		limpar();
 		buscar();
-		
+
 		FacesMessage mensagem = new FacesMessage();
 		mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
 		mensagem.setSummary("Empresa excluída com sucesso!");
-		
+
 		FacesContext.getCurrentInstance().addMessage(null, mensagem);
 	}
-	
+
 	public void limpar() {
 		empresa = new Empresa();
 	}
-	
+
 	public void buscar() {
 		empresas = dao.buscarTodos();
 		ramos = ramoDao.buscarTodos();
@@ -153,9 +153,5 @@ public class CadastroEmpresaController implements Serializable{
 	public void setEmpresasFiltros(List<Empresa> empresasFiltros) {
 		this.empresasFiltros = empresasFiltros;
 	}
-	
-	
+
 }
-
-	
-
