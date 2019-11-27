@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import sc.senac.br.controlefinanceiro.dao.util.JPAUtil;
 import sc.senac.br.controlefinanceiro.model.IBaseModel;
+
 @SuppressWarnings("unchecked")
 public abstract class BaseDao<T extends IBaseModel> implements IBaseDao<T> {
 

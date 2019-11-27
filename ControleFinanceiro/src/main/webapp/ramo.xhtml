@@ -18,11 +18,11 @@
 					columnClasses="ui-g-4 ui-md-3 ui-lg-2, ui-g-8 ui-md-9 ui-lg-10"
 					styleClass="ui-painelgrid-blank">
 
-					<p:outputLabel value="Categoria" for=" categoria" />
-					<p:inputText id="categoria" required="true"
+					<p:outputLabel value="Ramo:" for="ramo" />
+					<p:inputText id="ramo" required="true"
 						requiredMessage="Campo com preenchimento obrigatório"
-						placeholder="Informe a categoria"
-						value="#{cadastroCategoriaController.categoria.descricao}" />
+						placeholder="Informe o ramo"
+						value="#{cadastroRamoController.ramo.descricao}" />
 				</p:panelGrid>
 
 			</div>
@@ -36,7 +36,7 @@
 						action="#{cadastroCategoriaController.salvar}" />
 
 					<p:commandButton value="limpar" icon="fa fa-eraser" update="@form"
-						process="@this" action="#{cadastroCategoriaController.limpar}" />
+						process="@this" action="#{cadastroRamoController.limpar}" />
 				</f:facet>
 			</p:toolbar>
 
@@ -45,45 +45,45 @@
 
 		<h:form id="formDataTable">
 
-			<p:dataTable id="table" var="c" widgetVar="table" reflow="true"
+			<p:dataTable id="table" var="r" widgetVar="table" reflow="true"
 				paginator="true" rows="5" paginatorPosition="bottom"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15"
-				value="#{cadastroCategoriaController.categorias}"
-				filteredValue="#{cadastroCategoriaController.categoriasFiltros}">
+				value="#{cadastroRamoController.ramos}"
+				filteredValue="#{cadastroRamoController.ramosFiltros}">
 
-				<p:column headerText="Categoria" sortBy="#{c.descricao}">
-					<h:outputText value="#{c.descricao}" />
+				<p:column headerText="Ramo" sortBy="#{r.descricao}">
+					<h:outputText value="#{r.descricao}" />
 				</p:column>
 
 				<p:column exportable="false"
 					styleClass="align-center categoria-coluna-acoes">
 					<p:commandButton icon="fa fa-pencil" update="formCadastro">
-						<f:setPropertyActionListener value="#{c}"
-							target="#{cadastroCategoriaController.categorias}" />
+						<f:setPropertyActionListener value="#{r}"
+							target="#{cadastroRamoController.ramos}" />
 					</p:commandButton>
 
 					<p:commandButton icon="fa fa-trash"
 						update="formDataTable:confirmDialog"
-						oncomplete="CA('confirmDialog').show()">
-						<f:setPropertyActionListener value="{c}"
-							target="#{cadastroCategoriaController.categoria}" />
+						oncomplete="RA('confirmDialog').show()">
+						<f:setPropertyActionListener value="{r}"
+							target="#{cadastroRamoController.ramo}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 
 			<p:confirmDialog id="confirmDialog" header="Atenção!"
 				responsive="true"
-				message="Tem certeza que deseja excluir a categoria: #{cadastroCategoriaController.categoria.descricao} ?"
+				message="Tem certeza que deseja excluir o Ramo: #{cadastroRamoController.ramo.descricao} ?"
 				widgetVar="confirmDialog" showEffect="fade" hideEffect="fade"
 				closable="false" closeOnEscape="true">
 
 				<p:commandButton value="Sim" icon="fa fa-check" update="@form"
-					action="#{cadastroCategoriaController.excluir}"
-					oncomplete="CA('confirmDialog').hide()" />
+					action="#{cadastroRamoController.excluir}"
+					oncomplete="RA('confirmDialog').hide()" />
 
 				<p:button value="Não" icon="fa fa-times"
-					onclick="CA('confirmDialog').hide(); return false;" />
+					onclick="RA('confirmDialog').hide(); return false;" />
 
 			</p:confirmDialog>
 

@@ -22,6 +22,7 @@ public class CadastroRamoController implements Serializable {
 	private Ramo ramo;
 	private IBaseDao<Ramo> dao;
 	private List<Ramo> ramos;
+	private List<Ramo> ramosFiltros;
 
 	@PostConstruct
 	public void init() {
@@ -71,4 +72,12 @@ public class CadastroRamoController implements Serializable {
 		return ramos;
 	}
 
+	public List<Ramo> getRamosFiltros() {
+		return ramosFiltros;
+	}
+
+	public void setRamosFiltros(List<Ramo> ramosFiltros) {
+		this.ramosFiltros = ramosFiltros;
+	}
+	
 }
