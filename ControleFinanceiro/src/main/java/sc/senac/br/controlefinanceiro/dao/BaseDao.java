@@ -58,7 +58,9 @@ public abstract class BaseDao<T extends IBaseModel> implements IBaseDao<T> {
 	@Override
 	public List<T> buscarTodos() {
 		EntityManager manager = JPAUtil.getEntityManager();
-		TypedQuery<T> query = manager.createQuery("from" + persistenceClass.getName(), persistenceClass);
+		
+		TypedQuery<T> query = manager
+				.createQuery("from " + persistenceClass.getName(), persistenceClass);
 		List<T> resultado = query.getResultList();
 		manager.close();
 		return resultado;	
