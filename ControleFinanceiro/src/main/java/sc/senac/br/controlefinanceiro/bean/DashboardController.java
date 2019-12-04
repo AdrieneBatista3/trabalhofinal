@@ -21,7 +21,6 @@ public class DashboardController implements Serializable {
 	
 	 private EmpresaDao empresaDao;
 	 private List<EmpresasPorCategoriaDTO> empresasPorCategoriaDTOs;
-	 
 	 private PieChartModel empresasPorCategoriaModel;
 	 
 	 private final List<String> cores = Arrays.asList(
@@ -31,6 +30,7 @@ public class DashboardController implements Serializable {
 		 empresaDao = new EmpresaDao();
 		 empresasPorCategoriaDTOs = empresaDao.buscaCategoriasPorEmpresa();
 		 inicializaGraficoCategoriasPorEmpresa();
+	
 	 }
 	 
 	 private void inicializaGraficoCategoriasPorEmpresa() {
@@ -60,5 +60,6 @@ public class DashboardController implements Serializable {
 	public PieChartModel getEmpresasPorCategoriaModel() {
 		return empresasPorCategoriaModel;
 	}
+	
 
 }

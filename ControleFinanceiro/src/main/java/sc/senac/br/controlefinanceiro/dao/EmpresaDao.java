@@ -33,4 +33,7 @@ public class EmpresaDao extends BaseDao<Empresa> {
 		return resultado;
 	}
 
+			
+
+	
 }

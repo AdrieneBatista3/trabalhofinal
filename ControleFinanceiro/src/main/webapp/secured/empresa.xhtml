@@ -30,16 +30,17 @@
 						value="#{cadastroEmpresaController.empresa.CNPJ}"
 						placeholder="Informe seu CNPJ" />
 
-					<p:outputLabel value="Ramo" for="ramo" />
-					<p:selectOneMenu id="ramo"
-						value="#{cadastroEmpresaController.empresa.ramo}">
-						<f:selectItem itemLabel="Selecione um Ramo ..."
-							noSelectionOption="true" />
-
-						<f:selectItems var="e"
-							value="#{cadastroEmpresaController.empresas}"
-							itemLabel="#{e.descricao}" />
-					</p:selectOneMenu>
+					<p:outputLabel value="Ramo: " for="ramo" />
+			        <p:selectOneMenu id="ramo" value="#{cadastroEmpresaController.empresa.ramo}">
+			        	<f:selectItem
+			        		itemLabel="Selecione um Ramo ..." 
+			        		noSelectionOption="true" />
+			        		
+			        	<f:selectItems 
+			        		var="e" 
+			        		value="#{cadastroEmpresaController.ramos}"
+			        		itemLabel="#{e.descricao}" />
+			        </p:selectOneMenu>
 
 					<p:outputLabel value="Categoria" for="categoria" />
 					<p:selectOneMenu id="categoria"
@@ -48,7 +49,7 @@
 							noSelectionOption="true" />
 
 						<f:selectItems var="e"
-							value="#{cadastroEmpresaController.empresas}"
+							value="#{cadastroEmpresaController.categorias}"
 							itemLabel="#{e.descricao}" />
 					</p:selectOneMenu>
 
@@ -119,30 +120,30 @@
 					filterMatchMode="equals" sortBy="#{e.ramo.descricao}">
 					<f:facet name="filter">
 						<p:selectOneMenu id="ramo" onchange="RA ('table').filter()"
-							value="#{cadastroEmpresaController.empresa.ramo.descricao}">
+							value="#{cadastroEmpresaController.empresa.ramo}">
 
 							<f:selectItem itemLabel="Selecione um Ramo ..."
 								noSelectionOption="true" />
 
 							<f:selectItems var="e"
-								value="#{cadastroEmpresaController.empresas}"
+								value="#{cadastroEmpresaController.ramos}"
 								itemLabel="#{e.descricao}" />
 						</p:selectOneMenu>
 					</f:facet>
-					<h:inputText value="#{e.ramo.descricao}" />
+					<h:inputText value="#{e.descricao}" />
 				</p:column>
 
 				<p:column headerText="Categoria" filterBy="#{e.categoria}"
 					filterMatchMode="equals" sortBy="#{e.categoria.descricao}">
 					<f:facet name="filter">
-						<p:selectOneMenu id="categoria" onchange="RA ('table').filter()"
-							value="#{cadastroEmpresaController.empresa.categoria.descricao}">
+						<p:selectOneMenu id="categoria" onchange="CA ('table').filter()"
+							value="#{cadastroEmpresaController.empresa.categoria}">
 
 							<f:selectItem itemLabel="Selecione uma Categoria ..."
 								noSelectionOption="true" />
 
 							<f:selectItems var="e"
-								value="#{cadastroEmpresaController.empresas}"
+								value="#{cadastroEmpresaController.categorias}"
 								itemLabel="#{e.descricao}" />
 						</p:selectOneMenu>
 					</f:facet>

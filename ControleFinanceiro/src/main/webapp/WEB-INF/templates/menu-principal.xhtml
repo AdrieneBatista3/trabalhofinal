@@ -7,7 +7,8 @@
 		<p:menubar>
 			<p:submenu label="#{msg['menu.cadastro']}" icon="fa fa-save" >
 				<p:menuitem value="#{msg['menuitem.empresa']}" outcome="empresa" icon="fa fa-briefcase" />
-				<p:menuitem value="#{msg['menuitem.categoria']}" outcome="categoria" icon="fa fa-user" />
+				<p:menuitem value="#{msg['menuitem.categoria']}" outcome="categoria" icon="fa fa-briefcase" />
+				<p:menuitem value="#{msg['menuitem.ramo']}" outcome="ramo" icon="fa fa-briefcase" />
 			</p:submenu>
 			<p:menuitem value="#{msg['menu.dashboard']}" outcome="dashboard" icon="fa fa-columns" />
 			
@@ -15,7 +16,7 @@
 				<h:commandButton 
 					title="Português"
 					styleClass="bandeira-idioma"
-					image="resources/imagens/brazil-flag.png">
+					image="#{resource['imagens/brazil-flag.png']}">
 					
 					<f:setPropertyActionListener 
 						value="pt" 
@@ -24,13 +25,14 @@
 				<h:commandButton 
 					title="Inglês"
 					styleClass="bandeira-idioma"
-					image="resources/imagens/england-flag.png">
+					image="#{resource['imagens/england-flag.png']}">
 					
 					<f:setPropertyActionListener 
 						value="en" 
 						target="#{idiomaController.idiomaSelecionado}" />
 				</h:commandButton>
-	           <p:commandButton type="button" value="Sair" icon="fa fa-home" />
+	           <p:commandButton value="Sair" icon="fa fa-home"
+	               action="#{loginController.logout}"  />
 	       </f:facet>
 		</p:menubar>
 	</h:form>

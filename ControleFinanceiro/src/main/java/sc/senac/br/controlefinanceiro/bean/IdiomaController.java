@@ -3,8 +3,13 @@ package sc.senac.br.controlefinanceiro.bean;
 import java.io.Serializable;
 import java.util.Locale;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+
+@ManagedBean
+@SessionScoped
 public class IdiomaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;

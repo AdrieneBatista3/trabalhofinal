@@ -14,7 +14,7 @@ public class Ramo implements IBaseModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-    @Column
+	@Column(nullable = false)
 	private String descricao;
 
 	@Override
